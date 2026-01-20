@@ -1,17 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Audio Test</title>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Mitali 🎀</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #ffe6f0, #fff);
+      font-family: 'Comic Sans MS', 'Poppins', cursive;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-top: 60px;
+      color: #ff4d88;
+    }
+
+    .scroll {
+      margin-top: 30px;
+      font-size: 1.2rem;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0% {opacity: 1;}
+      50% {opacity: 0.3;}
+      100% {opacity: 1;}
+    }
+
+    .section {
+      margin-top: 80px;
+      padding: 20px;
+    }
+
+    .btn {
+      background: #ff4d88;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    img {
+      max-width: 80%;
+      border-radius: 20px;
+      margin: 20px 0;
+    }
+
+    .balloon {
+      position: fixed;
+      bottom: -100px;
+      font-size: 3rem;
+      animation: float 8s linear infinite;
+    }
+
+    @keyframes float {
+      0% {transform: translateY(0);}
+      100% {transform: translateY(-120vh);}
+    }
+  </style>
 </head>
 
-<body style="text-align:center; margin-top:50px;">
+<body>
 
-<h2>Tap Play</h2>
+  <!-- 🎵 Song -->
+  <audio autoplay loop controls>
+    <source src="song.wav" type="audio/wav">
+  </audio>
 
-<audio controls>
-  <source src="song.wav" type="audio/wav">
-</audio>
+  <!-- 🎀 Balloons -->
+  <div class="balloon" style="left:10%">🎈</div>
+  <div class="balloon" style="left:30%">🎈</div>
+  <div class="balloon" style="left:50%">🎈</div>
+  <div class="balloon" style="left:70%">🎈</div>
+  <div class="balloon" style="left:90%">🎈</div>
+
+  <h1>🎀 Happiest Birthday Mitali 🎀</h1>
+  <div class="scroll">⬇ Scroll Down ⬇</div>
+
+  <div class="section">
+    <h2>🕯️ Make a Wish</h2>
+    <p>Yaha pe click karo aur candle blow karo ✨</p>
+    <a class="btn">💨 Blow the Candle</a>
+  </div>
+
+  <div class="section">
+    <h2>Abhi aur hain 😋</h2>
+    <img src="photo1.jpg">
+    <p>
+      Happiest Birthday Mitali 💖  
+      <br><br>
+      Jab maine “happiest” bola, I really meant it.  
+      Hamesha khush raho ✨  
+      <br><br>
+      Aur haan — mere saath baatein karna continue rakhna 😈  
+      warna lifetime friendship contract toot jayega 💔
+    </p>
+    <img src="photo2.jpg">
+  </div>
+
+  <div class="section">
+    <h2>🎁 Your Birthday Gift</h2>
+    <p>
+      Sorry, iss saal gift nahi de paaya 💔  
+      <br>
+      Next year pakka 😌  
+      <br><br>
+      Tab tak ek virtual chocolate waffle 🍫🧇  
+      kyunki tumhe pasand hai ❤️
+    </p>
+    <img src="waffle.jpg">
+  </div>
 
 </body>
 </html>
