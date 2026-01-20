@@ -1,123 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Happy Birthday Mitali 🎀</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #ffe6f0, #fff);
-      font-family: 'Comic Sans MS', 'Poppins', cursive;
-      text-align: center;
-      overflow-x: hidden;
-    }
+<title>Happy Birthday Mitali 🎀</title>
 
-    h1 {
-      font-size: 3rem;
-      margin-top: 60px;
-      color: #ff4d88;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
-    .scroll {
-      margin-top: 30px;
-      font-size: 1.2rem;
-      animation: blink 1.5s infinite;
-    }
+<style>
+  .candles {
+  font-size: 40px;
+  cursor: pointer;
+}
 
-    @keyframes blink {
-      0% {opacity: 1;}
-      50% {opacity: 0.3;}
-      100% {opacity: 1;}
-    }
+.candle {
+  display: inline-block;
+  transition: transform 0.6s, opacity 0.6s;
+}
 
-    .section {
-      margin-top: 80px;
-      padding: 20px;
-    }
+.candle.blown {
+  opacity: 0;
+  transform: translateY(20px);
+}
+  html {
+  scroll-behavior: smooth;
+}
+.gift-box {
+  font-size: 80px;
+  cursor: pointer;
+  transition: transform 0.5s;
+}
 
-    .btn {
-      background: #ff4d88;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 25px;
-      text-decoration: none;
-      font-size: 1.1rem;
-      display: inline-block;
-      margin-top: 20px;
-    }
+.gift-box.opened {
+  transform: scale(0);
+}
 
-    img {
-      max-width: 80%;
-      border-radius: 20px;
-      margin: 20px 0;
-    }
+#waffleImg {
+  margin-top: 20px;
+  width: 200px;
+  border-radius: 20px;
+}
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ffe4ec, #fff6d5);
+  text-align: center;
+  overflow-x: hidden;
+}
 
-    .balloon {
-      position: fixed;
-      bottom: -100px;
-      font-size: 3rem;
-      animation: float 8s linear infinite;
-    }
+.section {
+  padding: 60px 20px;
+}
 
-    @keyframes float {
-      0% {transform: translateY(0);}
-      100% {transform: translateY(-120vh);}
-    }
-  </style>
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 3rem;
+  color: #ff4f81;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+.card {
+  background: white;
+  margin: 30px auto;
+  padding: 25px;
+  border-radius: 20px;
+  max-width: 350px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+button {
+  background: #ff4f81;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 1rem;
+}
+
+img {
+  width: 90%;
+  border-radius: 15px;
+  margin-top: 15px;
+}
+
+.balloon {
+  position: fixed;
+  bottom: -100px;
+  font-size: 2.5rem;
+  animation: float 8s infinite ease-in;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-120vh); }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- 🎵 Song -->
-  <audio autoplay loop controls>
-    <source src="song.wav" type="audio/wav">
-  </audio>
+<!-- Music -->
+<audio autoplay loop controls>
+  <source src="song.wav" type="audio/wav">
+</audio>
 
-  <!-- 🎀 Balloons -->
-  <div class="balloon" style="left:10%">🎈</div>
-  <div class="balloon" style="left:30%">🎈</div>
-  <div class="balloon" style="left:50%">🎈</div>
-  <div class="balloon" style="left:70%">🎈</div>
-  <div class="balloon" style="left:90%">🎈</div>
+<!-- Balloons -->
+<div class="balloon" style="left:10%">🎈</div>
+<div class="balloon" style="left:40%">🎀</div>
+<div class="balloon" style="left:70%">🎈</div>
 
-  <h1>🎀 Happiest Birthday Mitali 🎀</h1>
-  <div class="scroll">⬇ Scroll Down ⬇</div>
+<!-- Section 1 -->
+<div class="screen section"
+  id="screen1">
+  <h1>🎀Happy Birthday Mitali 🎀</h1>
+  <p class="subtitle">Scroll slowly… </p>
+  <button onclick="goToScreen('screen2')">
+  Scroll Down 🎀
+  </button>
+</div>
 
-  <div class="section">
-    <h2>🕯️ Make a Wish</h2>
-    <p>Yaha pe click karo aur candle blow karo ✨</p>
-    <a class="btn">💨 Blow the Candle</a>
-  </div>
+<!-- Section 2 -->
+<div class="screen section"
+  id="screen2">
+  <p><b>Yaha pe click karo to make a wish ✨</b></p>
+  <div class="candles" onclick="blowCandles()">
+  <span class="candle">🕯️</span>
+  <span class="candle">🕯️</span>
+  <span class="candle">🕯️</span>
+</div>
 
-  <div class="section">
-    <h2>Abhi aur hain 😋</h2>
-    <img src="photo1.jpg">
-    <p>
-      Happiest Birthday Mitali 💖  
-      <br><br>
-      Jab maine “happiest” bola, I really meant it.  
-      Hamesha khush raho ✨  
-      <br><br>
-      Aur haan — mere saath baatein karna continue rakhna 😈  
-      warna lifetime friendship contract toot jayega 💔
-    </p>
-    <img src="photo2.jpg">
-  </div>
+<p id="wishText" style="display:none; margin-top:20px;">
+  ✨ Wish made! Smile 😈
+</p>
 
-  <div class="section">
-    <h2>🎁 Your Birthday Gift</h2>
-    <p>
-      Sorry, iss saal gift nahi de paaya 💔  
-      <br>
-      Next year pakka 😌  
-      <br><br>
-      Tab tak ek virtual chocolate waffle 🍫🧇  
-      kyunki tumhe pasand hai ❤️
-    </p>
-    <img src="waffle.jpg">
-  </div>
+<button id="nextBtn" style="display:none;" onclick="goToScreen('screen3')">
+  Next 🎀
+</button>
+  
+</div>
 
+<!-- Section 3 -->
+<div class="screen section"
+  id="screen3">
+  <p><b>Abhi aur hai 😋</b></p>
+</div>
+
+<!-- Photos -->
+<div class="screen section card"
+  id="screen4">
+  <img src="photo1.jpg">
+  <p style="margin-top:15px;">
+    Happiest Birthday Mitali 🎀 
+    When I say “happiest”, I really mean it.  
+    Hamesha khush raho…  
+    aur obviously mere saath baate karna continue rakhna 😈  
+    warna lifetime friendship contract toot jayega 💔
+  </p>
+  <img src="photo2.jpg">
+</div>
+
+<!-- Gift -->
+<div class="screen section card"
+  id="screen5">
+  <h2>🎁 Your Birthday Gift 🎁</h2>
+
+<div class="gift-box" onclick="openGift()">
+  🎁
+</div>
+
+<p id="giftText" style="display:none; margin-top:20px;">
+  Sorry, iss saal gift nahi de paaya 💔<br>
+  But next year pakka 👺<br><br>
+  Till then… virtual chocolate waffle for you 🤤
+</p>
+
+<img id="waffleImg" src="waffle.jpg" style="display:none;">
+</div>
+<script>
+  function goToScreen(id) {
+    document.querySelectorAll('.screen').forEach(screen => {
+      screen.style.display = 'none';
+    });
+    document.getElementById(id).style.display = 'flex';
+  }
+function openGift() {
+  document.querySelector('.gift-box').classList.add('opened');
+  document.getElementById('giftText').style.display = 'block';
+  document.getElementById('waffleImg').style.display = 'block';
+}
+  // show first screen only
+  goToScreen('screen1');
+</script>
 </body>
 </html>
