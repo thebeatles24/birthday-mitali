@@ -30,6 +30,8 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  z-index: 10;
 }
 
 .screen h1 {
@@ -60,6 +62,8 @@ button:hover {
   bottom: -100px;
   font-size: 3rem;
   animation: float 8s infinite ease-in;
+  z-index: 1;
+  pointer-events: none;
 }
 
 @keyframes float {
@@ -118,6 +122,7 @@ button:hover {
   top: -10px;
   font-size: 1.2rem;
   animation: fall 3s linear forwards;
+  z-index: 20;
 }
 
 @keyframes fall {
@@ -195,12 +200,12 @@ function goToScreen(id) {
     startTyping();
   }
 }
-
-/* ---------- MUSIC AUTOPLAY SAFE ---------- */
+  /* ---------- MUSIC AUTOPLAY SAFE ---------- */
 document.body.addEventListener('click', () => {
   document.getElementById('bgMusic').play();
 }, { once: true });
-  /* ---------- CANDLES ---------- */
+
+/* ---------- CANDLES ---------- */
 function blowCandles() {
   document.querySelector('.candles').classList.add('blowed');
   document.getElementById('wishText').innerText = "Wish made 💖";
@@ -228,7 +233,7 @@ function launchConfetti() {
 
 /* ---------- WORD BY WORD TYPING ---------- */
 const messageText = 
-Happiest Birthday Mitali 💖
+Happiest Birthday Mitali 🎀
 jab maine "happiest" bola, I really meant it.
 Hamesha khush raho… aur mere saath baate karna band mat karna 😈
 warna lifetime friendship contract toot jaayega 💔
@@ -247,7 +252,7 @@ function startTyping() {
     } else {
       clearInterval(typing);
     }
-  }, 220); // typing speed (increase = slower)
+  }, 220);
 }
 
 /* ---------- START ---------- */
