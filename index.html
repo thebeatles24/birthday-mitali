@@ -30,8 +30,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: relative;
-  z-index: 10;
 }
 
 .screen h1 {
@@ -62,8 +60,6 @@ button:hover {
   bottom: -100px;
   font-size: 3rem;
   animation: float 8s infinite ease-in;
-  z-index: 1;
-  pointer-events: none;
 }
 
 @keyframes float {
@@ -106,6 +102,18 @@ button:hover {
   width: 100%;
 }
 
+/* ---------- MESSAGE REVEAL ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ---------- GIFT ---------- */
 .gift {
   font-size: 4rem;
@@ -122,7 +130,6 @@ button:hover {
   top: -10px;
   font-size: 1.2rem;
   animation: fall 3s linear forwards;
-  z-index: 20;
 }
 
 @keyframes fall {
@@ -171,8 +178,12 @@ button:hover {
     </div>
   </div>
 
-  <!-- WORD BY WORD MESSAGE -->
-  <p id="myMessage" style="margin-top:20px; font-size:1rem; line-height:1.6;"></p>
+  <p class="reveal" id="myMessage" style="margin-top:20px;">
+    Happiest Birthday Mitali 💖<br>
+    jab maine “happiest” bola, I really meant it.<br>
+    Hamesha khush raho… aur mere saath baate karna band mat karna 😈<br>
+    warna lifetime friendship contract toot jaayega 💔
+  </p>
 
   <button onclick="goToScreen('screen4')">Next 🎀</button>
 </div>
@@ -188,37 +199,35 @@ button:hover {
     <img src="waffle.jpg" width="200">
   </div>
 </div>
-
 <script>
-/* ---------- SCREEN NAV ---------- */
 function goToScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.style.display = 'none');
   const screen = document.getElementById(id);
   screen.style.display = 'flex';
 
-  if (id === 'screen3') {
-    startTyping();
+  const msg = document.getElementById('myMessage');
+  if (msg) {
+    msg.classList.remove('show');
+    setTimeout(() => msg.classList.add('show'), 400);
   }
 }
-  /* ---------- MUSIC AUTOPLAY SAFE ---------- */
+
+// autoplay-safe music
 document.body.addEventListener('click', () => {
   document.getElementById('bgMusic').play();
 }, { once: true });
 
-/* ---------- CANDLES ---------- */
 function blowCandles() {
   document.querySelector('.candles').classList.add('blowed');
   document.getElementById('wishText').innerText = "Wish made 💖";
   setTimeout(() => goToScreen('screen3'), 1200);
 }
 
-/* ---------- GIFT ---------- */
 function openGift() {
   document.getElementById('giftContent').classList.remove('hidden');
   launchConfetti();
 }
 
-/* ---------- CONFETTI ---------- */
 function launchConfetti() {
   for (let i = 0; i < 40; i++) {
     const confetti = document.createElement('div');
@@ -231,31 +240,6 @@ function launchConfetti() {
   }
 }
 
-/* ---------- WORD BY WORD TYPING ---------- */
-const messageText = 
-Happiest Birthday Mitali 🎀
-jab maine "happiest" bola, I really meant it.
-Hamesha khush raho… aur mere saath baate karna band mat karna 😈
-warna lifetime friendship contract toot jaayega 💔
-;
-
-function startTyping() {
-  const el = document.getElementById('myMessage');
-  el.innerHTML = "";
-  const words = messageText.split(" ");
-  let i = 0;
-
-  const typing = setInterval(() => {
-    if (i < words.length) {
-      el.innerHTML += words[i] + " ";
-      i++;
-    } else {
-      clearInterval(typing);
-    }
-  }, 220);
-}
-
-/* ---------- START ---------- */
 goToScreen('screen1');
 </script>
 
