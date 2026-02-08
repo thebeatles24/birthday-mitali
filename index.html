@@ -3,20 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Mitali 🎀</title>
+<title>You’ve Got This Mitali 💪📚</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #ffe6f0, #fff);
+  background: linear-gradient(135deg, #dbeafe, #f0f9ff);
   overflow: hidden;
 }
 
@@ -33,9 +29,9 @@ body {
 }
 
 .screen h1 {
-  font-family: 'Pacifico', cursive;
-  font-size: 3rem;
+  font-size: 2.3rem;
   margin-bottom: 15px;
+  color: #1e3a8a;
 }
 
 button {
@@ -44,52 +40,50 @@ button {
   font-size: 1rem;
   border-radius: 30px;
   border: none;
-  background: #ff8fb1;
+  background: #2563eb;
   color: white;
   cursor: pointer;
   box-shadow: 0 8px 15px rgba(0,0,0,0.2);
 }
 
-button:hover {
-  transform: scale(1.05);
-}
+button:hover { transform: scale(1.05); }
 
-/* ---------- BALLOONS ---------- */
-.balloon {
+/* ---------- FLOATING ICONS ---------- */
+.float-icon {
   position: absolute;
-  bottom: -100px;
-  font-size: 3rem;
-  animation: float 8s infinite ease-in;
+  bottom: -80px;
+  font-size: 2.5rem;
+  animation: floatUp linear infinite;
 }
 
-@keyframes float {
+@keyframes floatUp {
   0% { transform: translateY(0); }
   100% { transform: translateY(-120vh); }
 }
 
-/* ---------- CANDLES ---------- */
-.candles {
-  font-size: 2.5rem;
-  cursor: pointer;
-  margin: 20px 0;
+/* ---------- CARD ---------- */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  width: 85%;
+  max-width: 340px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  margin-top: 20px;
 }
 
-.blowed {
-  opacity: 0;
-  transition: opacity 1s;
-}
-
-/* ---------- POLAROID ---------- */
+/* ---------- POLAROIDS ---------- */
 .polaroids {
   display: flex;
-  gap: 20px;
+  gap: 18px;
   margin-top: 20px;
+  justify-content: center;
 }
 
 .polaroid {
   background: white;
   padding: 10px 10px 25px;
-  width: 160px;
+  width: 140px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.25);
   transform: rotate(-6deg);
 }
@@ -98,11 +92,9 @@ button:hover {
   transform: rotate(6deg);
 }
 
-.polaroid img {
-  width: 100%;
-}
+.polaroid img { width: 100%; }
 
-/* ---------- MESSAGE REVEAL ---------- */
+/* ---------- REVEAL ---------- */
 .reveal {
   opacity: 0;
   transform: translateY(20px);
@@ -112,16 +104,6 @@ button:hover {
 .reveal.show {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* ---------- GIFT ---------- */
-.gift {
-  font-size: 4rem;
-  cursor: pointer;
-}
-
-.hidden {
-  display: none;
 }
 
 /* ---------- CONFETTI ---------- */
@@ -143,33 +125,38 @@ button:hover {
 
 <body>
 
-<!-- 🎵 MUSIC -->
 <audio id="bgMusic" src="song.wav" loop></audio>
 
-<!-- 🎈 BALLOONS -->
-<div class="balloon" style="left:10%">🎈</div>
-<div class="balloon" style="left:40%">🎈</div>
-<div class="balloon" style="left:70%">🎈</div>
+<!-- Floating Study Icons -->
+<div class="float-icon" style="left:10%">📚</div>
+<div class="float-icon" style="left:40%">✨</div>
+<div class="float-icon" style="left:70%">📝</div>
 
 <!-- SCREEN 1 -->
 <div class="screen" id="screen1">
-  <h1>🎀 Happy Birthday Mitali 🎀</h1>
-  <p>Scroll nahi… button dabao 😋</p>
-  <button onclick="goToScreen('screen2')">Start 💖</button>
+  <h1>Hey Mitali 💙</h1>
+  <p>I know exams are stressing you out…</p>
+  <button onclick="goToScreen('screen2')">Tap here 💫</button>
 </div>
 
 <!-- SCREEN 2 -->
 <div class="screen" id="screen2">
-  <p><b>Yaha pe click karo to make a wish ✨</b></p>
-  <div class="candles" onclick="blowCandles()">🕯️🕯️🕯️</div>
-  <p id="wishText">Blow the candles and smile 💫</p>
+  <div class="card">
+    <p><b>You’ve worked harder than you think 📖</b></p>
+    <p>Every late night, every revision, every doubt solved… it all counts.</p>
+  </div>
+  <button onclick="goToScreen('screen3')">Next ➡️</button>
 </div>
 
 <!-- SCREEN 3 -->
 <div class="screen" id="screen3">
-  <p>Abhi aur hain 😋</p>
+  <div class="card reveal" id="motivationText">
+    You are smart. You are capable.  
+    And you are going to do AMAZING in these exams 💪✨  
+    Trust your preparation and stay calm 🧠💙
+  </div>
 
-  <div class="polaroids">
+  <div class="polaroids reveal" id="photoMemories">
     <div class="polaroid">
       <img src="photo1.jpg">
     </div>
@@ -178,38 +165,40 @@ button:hover {
     </div>
   </div>
 
-  <p class="reveal" id="myMessage" style="margin-top:20px;">
-    Happiest Birthday Mitali 🎀<br>
-    jab maine 'happiest' bola,i really mean it.
-    Hamesha khush raho and mere saath baate karna band mat karna😈
-    Warna lifetime friendship contract toot jaaega 💔
+  <p class="reveal" style="margin-top:15px; font-size:0.9rem; color:#555;">
+    Proof that you’ve smiled through tough days before… you’ll conquer these exams too 💙
   </p>
 
-  <button onclick="goToScreen('screen4')">Next 🎀</button>
+  <button onclick="goToScreen('screen4')">One more thing 👀</button>
 </div>
 
 <!-- SCREEN 4 -->
 <div class="screen" id="screen4">
-  <p><b>Click here for your birthday gift 🎁</b></p>
-  <div class="gift" onclick="openGift()">🎁</div>
-
-  <div id="giftContent" class="hidden">
-    <p>Sorry iss saal gift nahi de paaya 💔<br>but next year pakka promise😤</p>
-    <p>Till then tumhara fav…chocolate waffle for you 🤤🍫Enjoy your birthday unc😝</p>
-    <img src="waffle.jpg" width="200">
+  <p><b>Click for a Confidence Boost 🚀</b></p>
+  <button onclick="boost()">Get Boost 💥</button>
+  <div id="boostMsg" class="reveal" style="margin-top:20px;">
+    This is your sign that success is already on the way 🌟  
+    Go show those exams who’s boss 😤📚
   </div>
 </div>
+<!-- SCREEN 5 (WAFFLE REWARD) -->
+<div class="screen" id="screen5">
+  <h1>After Exams… 🎉</h1>
+  <p>You + Me + Your Fav Treat 😋</p>
+  <img src="waffle.jpg" width="220" style="margin-top:15px; border-radius:12px;">
+  <p style="margin-top:10px;">Celebration is pending. Focus now, party later 💪💙</p>
+</div>
+
 <script>
 function goToScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.style.display = 'none');
   const screen = document.getElementById(id);
   screen.style.display = 'flex';
 
-  const msg = document.getElementById('myMessage');
-  if (msg) {
-    msg.classList.remove('show');
-    setTimeout(() => msg.classList.add('show'), 400);
-  }
+  screen.querySelectorAll('.reveal').forEach(el => {
+    el.classList.remove('show');
+    setTimeout(() => el.classList.add('show'), 300);
+  });
 }
 
 // autoplay-safe music
@@ -217,22 +206,20 @@ document.body.addEventListener('click', () => {
   document.getElementById('bgMusic').play();
 }, { once: true });
 
-function blowCandles() {
-  document.querySelector('.candles').classList.add('blowed');
-  document.getElementById('wishText').innerText = "Wish made 💖";
-  setTimeout(() => goToScreen('screen3'), 1200);
-}
-
-function openGift() {
-  document.getElementById('giftContent').classList.remove('hidden');
+function boost() {
+  document.getElementById('boostMsg').classList.add('show');
   launchConfetti();
+
+  setTimeout(() => {
+    goToScreen('screen5');
+  }, 3500);
 }
 
 function launchConfetti() {
   for (let i = 0; i < 40; i++) {
     const confetti = document.createElement('div');
     confetti.className = 'confetti';
-    confetti.innerText = ['🎊','🎀','✨','💖'][Math.floor(Math.random()*4)];
+    confetti.innerText = ['✨','📚','💙','🌟'][Math.floor(Math.random()*4)];
     confetti.style.left = Math.random() * 100 + 'vw';
     confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
     document.body.appendChild(confetti);
@@ -240,12 +227,14 @@ function launchConfetti() {
   }
 }
 
+// randomize floating icons
+document.querySelectorAll('.float-icon').forEach(icon => {
+  icon.style.left = Math.random() * 90 + 'vw';
+  icon.style.animationDuration = (6 + Math.random() * 5) + 's';
+});
+
 goToScreen('screen1');
 </script>
 
 </body>
 </html>
-
-
-
-
